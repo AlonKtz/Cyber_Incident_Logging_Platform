@@ -1,0 +1,8 @@
+/* global css value for making the wanted theme */
+* {
+	background: linear-gradient(135deg, #001b15 0%, #004f3b 40%, #00b480 100%);
+	background-attachment: fixed;
+	font-family: "Segoe UI Semilight", "Bahnschrift SemiLight", "Arial",
+		sans-serif;
+	color: white;
+}
