@@ -4,15 +4,36 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Document</title>
-		<link rel="stylesheet" href="style.css">
+		<link rel="stylesheet" href="style.css" />
+		<script src="JS/nav.js" defer></script>
 	</head>
 
 	<body>
-    <nav>
-        <a href="login.html">Login</a>
-        <a href="home_dashboard.html">Home</a>
-        <a href="addNew.html">Add a New Event</a>
-    </nav>
+		<div id="navBar"></div>
 		<h1>Add A New Event</h1>
+		<form>
+			<label>
+				Select Event Type:
+				<select id="cyberEvents">
+					<option disabled selected>Choose</option>
+					<option>Phishing Attempt</option>
+					<option>Malware Infection</option>
+					<option>Unauthorized Access</option>
+					<option>DDoS Attack</option>
+					<option>Data Leakage</option>
+					<option>Suspicious Login</option>
+					<option>Policy Violation</option>
+					<option>Ransomware Activity</option>
+					<option>Suspicious Chat</option>
+				</select>
+			</label><br><br>
+			<label>Did you identify the source of the reported event? </label>
+			<select id="sourceKnown?">
+				<option disabled selected>Yes/No</option>
+				<option value="Y">Yes</option>
+				<option value="N">No</option>
+			</select>
+			<!-- add JS rule that opens a text box if user ticks yes -->
+		</form>
 	</body>
 </html>

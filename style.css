@@ -6,3 +6,8 @@
 		sans-serif;
 	color: white;
 }
+
+/* solves the dropdown menu background color issue */
+select {
+	background-color: black;
+}
