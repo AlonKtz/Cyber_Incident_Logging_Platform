@@ -7,6 +7,7 @@
 		<link rel="stylesheet" href="style.css" />
 		<script src="JS/nav.js" defer></script>
 		<script src="JS/localStorage.JS" defer></script>
+		<script src="JS/signUp.js" defer></script>
 	</head>
 	<body>
 		<div id="navBar"></div>
@@ -34,7 +35,9 @@
 			<label>last name:</label>
 			<input type="text" id="lastName" name="lastName" /><br /><br />
 			<label>Date of Birth:</label>
-			<input type="date" id="userDob" name="userDob" /><br /><br />
+			<input type="date" id="userDob" name="userDob" oninput="calcAge()" />
+			<p id="ageResult"></p>
+			<br />
 			<input type="checkbox" id="termsConditions" name="termsConditions" /> I
 			aknowledge the cybersecurity guidelines of AK Development Group.<br /><br />
 			<input
