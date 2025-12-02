@@ -1,5 +1,3 @@
-var today = now.getFullYear();
-
 function func() {
     let userEmail = document.getElementById("userEmail").value;
 	let userName = document.getElementById("userName").value;
