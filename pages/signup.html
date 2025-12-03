@@ -17,7 +17,7 @@
 			AK EmberShield will <span>NEVER</span> ask your password or credentials.
 		</p>
 		<br />
-		<form onsubmit="func()">
+		<form onsubmit="func(); passwordChecker(); ageValidator(); conditionsChecker();" >
 			<label>Email Address:</label>
 			<input type="email" id="userEmail" name="userEmail" /><br /><br />
 			<label>User Name:</label>
@@ -28,11 +28,12 @@
 				id="userPassword"
 				name="userPassword"
 			/><br /><br />
-			<label>repeat password:</label>
-			<input type="password" /><br /><br />
-			<label>first name:</label>
+			<label>Repeat Password:</label>
+			<input type="password" id="userPasswordV"/><br />
+			<p id="message" class="error">Passwords are not Matching</p>
+			<label>First Name:</label>
 			<input type="text" id="firstName" name="firstName" /><br /><br />
-			<label>last name:</label>
+			<label>Last Name:</label>
 			<input type="text" id="lastName" name="lastName" /><br /><br />
 			<label>Date of Birth:</label>
 			<input type="date" id="userDob" name="userDob" oninput="calcAge()" />

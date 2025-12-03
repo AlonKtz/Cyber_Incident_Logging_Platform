@@ -11,3 +11,7 @@
 select {
 	background-color: black;
 }
+
+.error {
+	color: red;
+}

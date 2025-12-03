@@ -9,5 +9,9 @@ function calcAge() {
 	document.getElementById("ageResult").textContent =
 		"You are " + userAge2 + " years old";
 }
+
+// passwordChecker(); for ref: userPassword  to userPasswordV
+// ageValidator();
+// conditionsChecker();
+
 // for further purposes, the varaible userAge2 shows the final age.
-// add Age Check functionality !
