@@ -6,8 +6,8 @@
 		<title>Document</title>
 		<link rel="stylesheet" href="../style.css" />
 		<script src="../JS/nav.js" defer></script>
-		<script src="../JS/localStorage.js" defer></script>
 		<script src="../JS/signUp.js" defer></script>
+		<script src="../JS/localStorage.js" defer></script>
 	</head>
 	<body>
 		<div id="navBar"></div>
@@ -17,7 +17,7 @@
 			AK EmberShield will <span>NEVER</span> ask your password or credentials.
 		</p>
 		<br />
-		<form onsubmit="func(); passwordChecker(); ageValidator(); conditionsChecker();" >
+		<form onsubmit="saveUser();" >
 			<label>Email Address:</label>
 			<input type="email" id="userEmail" name="userEmail" /><br /><br />
 			<label>User Name:</label>

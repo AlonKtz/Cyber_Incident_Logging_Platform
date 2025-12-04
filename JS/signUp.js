@@ -8,6 +8,8 @@ function calcAge() {
 	const userAge2 = Math.abs(ageDate.getUTCFullYear() - 1970);
 	document.getElementById("ageResult").textContent =
 		"You are " + userAge2 + " years old";
+	
+	return userAge2;
 }
 
 // passwordChecker(); for ref: userPassword  to userPasswordV
