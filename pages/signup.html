@@ -17,21 +17,24 @@
 			AK EmberShield will <span>NEVER</span> ask your password or credentials.
 		</p>
 		<br />
-		<form onsubmit="saveUser();" >
+		<form onsubmit="saveUser();">
 			<label>Email Address:</label>
 			<input type="email" id="userEmail" name="userEmail" /><br /><br />
 			<label>User Name:</label>
 			<input type="text" id="userName" name="userName" /><br /><br />
 			<label>Password:</label>
-			<input
-				type="password"
-				id="userPassword"
-				name="userPassword"
-			/><br /><br />
+			<div class="password-row">
+				<input type="password" id="userPassword" name="userPassword" />
+				<button type="button" id="togglePass" class="eye-button">👀</button>
+			</div>
+			<br /><br />
 			<label>Repeat Password:</label>
-			<input type="password" id="userPasswordV"/><br />
-			<p id="message" class="error">Passwords are not Matching</p>
-			<label>First Name:</label>
+			<input type="password" id="userPasswordV" /><br />
+			<!-- hiding the error message by default -->
+			<p id="message" class="error" style="display: none">
+				Passwords are not Matching
+			</p>
+			<br /><label>First Name:</label>
 			<input type="text" id="firstName" name="firstName" /><br /><br />
 			<label>Last Name:</label>
 			<input type="text" id="lastName" name="lastName" /><br /><br />
@@ -43,9 +46,10 @@
 			aknowledge the cybersecurity guidelines of AK Development Group.<br /><br />
 			<input
 				type="submit"
-				id="sumbitSignUp"
+				id="submitSignUp"
 				name="sumbitSignUp"
 				value="Create User"
+				disabled
 			/>
 		</form>
 	</body>
