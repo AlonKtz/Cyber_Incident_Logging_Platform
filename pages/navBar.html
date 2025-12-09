@@ -4,17 +4,31 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="stylesheet" href="../style.css" />
-        <script src="../JS/nav.js" defer></script>
 		<title>navBar</title>
 	</head>
 	<body>
 		<nav id="navBar">
 			<a href="login.html" target="_parent">Login</a>
-            <a href="home_dashboard.html" target="_parent">Home</a>
+			<a href="home_dashboard.html" target="_parent">Home</a>
 			<a href="update-profile.html" target="_parent">My Profile</a>
 			<a href="addNew.html" target="_parent">Add a New Event</a>
 			<a href="resume.html" target="_parent">I-AM</a>
 			<a id="logoutBtn" class="logout-btn" target="_parent">Disconnect</a>
 		</nav>
+		<!-- ChatGPT adviced me to do this an an inline JS even though this is not the best practice. -->
+		<script>
+			document.addEventListener("DOMContentLoaded", function () {
+				const logoutBtn = document.getElementById("logoutBtn");
+
+				if (logoutBtn) {
+					logoutBtn.addEventListener("click", function () {
+						//remove logged in user
+						localStorage.removeItem("currentUser");
+						//redirect to login page
+						window.parent.location.href = "./login.html";
+					});
+				}
+			});
+		</script>
 	</body>
 </html>
