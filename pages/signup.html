@@ -14,7 +14,8 @@
 		<h1>Let's set you up and get to know you!</h1>
 		<p>Tip: do not share sensitive or personal data with anyone online.</p>
 		<p>
-			AK EmberShield will <span>NEVER</span> ask your password or credentials.
+			AK EmberShield will <span style="color: red">NEVER</span> ask your
+			password or credentials.
 		</p>
 		<br />
 		<form onsubmit="saveUser();">
@@ -22,6 +23,12 @@
 			<input type="email" id="userEmail" name="userEmail" /><br /><br />
 			<label>User Name:</label>
 			<input type="text" id="userName" name="userName" /><br /><br />
+			<p id="errorMessageUserShort" class="error" style="display: none">
+				username is requiered to be at least 6 characters long.
+			</p>
+			<p id="errorMessageUserTaken" class="error" style="display: none">
+				username is taken, try another one.
+			</p>
 			<label>Password:</label>
 			<div class="password-row">
 				<input type="password" id="userPassword" name="userPassword" />
@@ -36,11 +43,20 @@
 			</p>
 			<br /><label>First Name:</label>
 			<input type="text" id="firstName" name="firstName" /><br /><br />
+			<p id="fNameShortError" class="error" style="display: none">
+				first name needs to be at least 2 characters long.
+			</p>
 			<label>Last Name:</label>
 			<input type="text" id="lastName" name="lastName" /><br /><br />
+			<p id="lNameShortError" class="error" style="display: none">
+				last name needs to be at least 2 characters long.
+			</p>
 			<label>Date of Birth:</label>
 			<input type="date" id="userDob" name="userDob" oninput="calcAge()" />
 			<p id="ageResult"></p>
+			<p id="errorAgeMessage" class="error" style="display: none">
+				AK EmberShield is restricted to ages under 18 and over 65.
+			</p>
 			<br />
 			<input type="checkbox" id="termsConditions" name="termsConditions" /> I
 			aknowledge the cybersecurity guidelines of AK Development Group.<br /><br />

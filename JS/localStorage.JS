@@ -5,6 +5,7 @@ function saveUser() {
 	const userPassword = document.getElementById("userPassword").value;
 	const firstName = document.getElementById("firstName").value;
 	const lastName = document.getElementById("lastName").value;
+	const userBirthday = document.getElementById("userDob").value
 	const age = calcAge();
 
 	// creating the user object 
@@ -14,7 +15,8 @@ function saveUser() {
 		userName: userName,
 		userPassword : userPassword,
 		email: userEmail,
-		age: age
+		age: age,
+		userBirthday: userBirthday
 	};
 
 
