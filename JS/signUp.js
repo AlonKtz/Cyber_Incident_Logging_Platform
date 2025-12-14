@@ -22,7 +22,7 @@ userDob.addEventListener("input", function () {
 });
 
 function checkAge(age) {
-	if (age < 18 || age > 65) {
+	if (isNaN(age) || age < 18 || age > 65) {
 		errorAgeMessage.style.display = "block";
 		submitBtn.disabled = true;
 		return;
@@ -69,25 +69,57 @@ const pass1 = document.getElementById("userPassword");
 const pass2 = document.getElementById("userPasswordV");
 const message = document.getElementById("message");
 const submitBtn = document.getElementById("submitSignUp");
+const passErrorStrength = document.getElementById("passErrorStrength");
+const passErrorLength = document.getElementById("passErrorLength");
 
 pass1.addEventListener("input", checkPasswords);
 pass2.addEventListener("input", checkPasswords);
 
 function checkPasswords() {
-	// if one of them is empty we dont do nothing
+	const specialChars = '!@#$%^&*(),.?":{}|<>_-+=/';
+	// reseting error messages
+	passErrorLength.style.display = "none";
+	passErrorStrength.style.display = "none";
+	message.style.display = "none";
+	// when fields are empty.
 	if (pass1.value === "" || pass2.value === "") {
+		submitBtn.disabled = true;
+		return;
+	}
+
+	// password verification
+
+	if (pass1.value !== pass2.value) {
 		message.style.display = "block";
 		submitBtn.disabled = true;
 		return;
 	}
 
-	if (pass1.value === pass2.value) {
-		message.style.display = "none";
-		submitBtn.disabled = false;
-	} else {
-		message.style.display = "block";
+	// Length Check
+	if (pass1.value.length < 8) {
+		passErrorLength.style.display = "block";
 		submitBtn.disabled = true;
+		return;
 	}
+	// Strength check
+	// making a Boolean flag of hasNumber and hasSpecialChar
+	let hasNumber = false;
+	let hasSpecialChar = false;
+	// for loop that goes through every char of the password, and checks for the appearance of special char
+	for (let i = 0; i < pass1.value.length; i++) {
+		let char = pass1.value[i];
+
+		if (char >= "0" && char <= "9") hasNumber = true;
+		if (specialChars.includes(char)) hasSpecialChar = true;
+	}
+
+	if (!hasNumber || !hasSpecialChar) {
+		passErrorStrength.style.display = "block";
+		submitBtn.disabled = true;
+		return;
+	}
+
+	submitBtn.disabled = false;
 }
 
 // hide and show pass logic
@@ -105,6 +137,7 @@ togglePass.addEventListener("click", function () {
 	}
 });
 
+// username checks
 const userName = document.getElementById("userName");
 const errorMessageUserShort = document.getElementById("errorMessageUserShort");
 const errorMessageUserTaken = document.getElementById("errorMessageUserTaken");
@@ -129,11 +162,10 @@ function checkUserName() {
 			errorMessageUserTaken.style.display = "block";
 			submitBtn.disabled = true;
 			return;
-		} else {
-			errorMessageUserTaken.style.display = "none";
-			submitBtn.disabled = false;
 		}
 	}
+	errorMessageUserTaken.style.display = "none";
+	submitBtn.disabled = false;
 }
 
 // conditionsChecker();

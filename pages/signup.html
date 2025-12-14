@@ -37,6 +37,13 @@
 			<br /><br />
 			<label>Repeat Password:</label>
 			<input type="password" id="userPasswordV" /><br />
+			<p id="passErrorStrength" class="error" style="display: none">
+				Password does not contain a special character.
+			</p>
+
+			<p id="passErrorLength" class="error" style="display: none">
+				Passwords is too short, please use 8 characters at least.
+			</p>
 			<!-- hiding the error message by default -->
 			<p id="message" class="error" style="display: none">
 				Passwords are not Matching
