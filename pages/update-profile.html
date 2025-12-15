@@ -1,15 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="../style.css">
-    <script src="../JS/userAuth.js" defer></script>
-    <script src="../JS/nav.js" defer></script>
-</head>
-<body>
-    <iframe src="navBar.html" id="navFrame"></iframe>
-    <h1>Profile Details</h1>
-</body>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>User Profile</title>
+		<link rel="stylesheet" href="../style.css" />
+		<script src="../JS/userAuth.js" defer></script>
+		<script src="../JS/nav.js" defer></script>
+		<script src="../JS/profile.js" defer></script>
+	</head>
+	<body>
+		<iframe src="navBar.html" id="navFrame"></iframe>
+		<h1>Profile Details</h1>
+        <button id="editProfileBtn">Edit Profile</button>
+        <button id="saveProfileBtn" style="display: none;">Save Changes</button>
+		<div id="profileCard">
+			<p><strong>Name:</strong> <span id="profileName"></span></p>
+			<p><strong>Username:</strong> <span id="profileUserName"></span></p>
+			<p><strong>Email:</strong> <span id="profileEmail"></span></p>
+			<p><strong>Age:</strong> <span id="profileAge"></span></p>
+			<p><strong>Date of Birth:</strong> <span id="profileDob"></span></p>
+		</div>
+	</body>
 </html>

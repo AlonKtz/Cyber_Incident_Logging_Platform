@@ -56,3 +56,22 @@ select {
     border: none;   /* removes the ugly border */
     overflow: hidden; /* hides any spacing issues */
 }
+
+textarea {
+  width: 50%;
+  min-height: 90px;
+  max-height: 200px;
+  resize: none;       
+  font-family: inherit;    
+  font-size: 14px;
+  line-height: 1.4;
+  border-radius: 6px;
+  border: 1px solid #cfd8dc;
+  background-color: #ffffff;
+}
+
+textarea:focus {
+  outline: none;
+  border-color: #4caf50;   
+  box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.15);
+}

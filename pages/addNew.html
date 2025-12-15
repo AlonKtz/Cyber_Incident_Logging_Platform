@@ -3,16 +3,28 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Document</title>
+		<title>Add new event</title>
 		<link rel="stylesheet" href="../style.css" />
 		<script src="../JS/userAuth.js" defer></script>
 		<script src="../JS/nav.js" defer></script>
+		<script src="../JS/addNew.js" defer></script>
 	</head>
 
 	<body>
 		<iframe src="navBar.html" id="navFrame"></iframe>
-		<h1>Add A New Event</h1>
-		<form>
+		<h1>Add A New Cyber Event / Activity</h1>
+		<p>Reporting User: <span id="userName"></span></p>
+		<form id="addForm" oninput="NewEventChecker()" onsubmit="return handleAddEvent()">
+			<label>
+				Event Date & Time:
+				<input type="datetime-local" id="eventDateTime">
+			</label><br><br/>
+			<label>Drill or Actual: </label>
+			<select id="drillFlag">
+				<option disabled selected>Choose</option>
+				<option value="Drill">Drill</option>
+				<option value="Actual">Actual</option></select
+			><br><br>
 			<label>
 				Select Event Type:
 				<select id="cyberEvents">
@@ -26,18 +38,40 @@
 					<option>Policy Violation</option>
 					<option>Ransomware Activity</option>
 					<option>Suspicious Chat</option>
-				</select>
-			</label><br><br>
-			<label>Did you identify the source of the reported event? </label>
-			<select id="sourceKnown?">
-				<option disabled selected>Yes/No</option>
-				<option value="Y">Yes</option>
-				<option value="N">No</option>
-			</select><br><br>
-			<!-- add JS rule that opens a text box if user ticks yes -->
-			<button type="submit">Log</button>
+				</select> </label
+			><br><br>
+			<label>What Role did you take in the event? </label>
+			<select id="roleOfReporter">
+				<option disabled selected>Choose</option>
+				<option value="Attacker">Attacker</option>
+				<option value="Defender">Defender</option>
+				<option value="Watcher">Watcher</option></select
+			><br><br>
+			<label>
+				Event Severity (1= Low impact, 5= Critical impact):
+				<select id="severity">
+					<option disabled selected>Select severity level</option>
+					<option value="1">1 - Very Low</option>
+					<option value="2">2 - Low</option>
+					<option value="3">3 - Medium</option>
+					<option value="4">4 - High</option>
+					<option value="5">5 - Critical</option>
+				</select><br><br>
+			<label>
+				Affected System name:
+			<input type="text" id="affectedSystem"/>
+			</label><br /><br />
+			<label>
+				Event Summary:
+				<br><br/>
+				<textarea id="eventSummary" placeholder="Brief description of the event"></textarea><br></br>
+			</label>
+			<button				
+				type="submit"
+				id="logNewEventBtn"
+				value="Log Event"
+				disabled>Log</button>
 			<button type="reset">reset form</button>
-
 		</form>
 	</body>
 </html>
