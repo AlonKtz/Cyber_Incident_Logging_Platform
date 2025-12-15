@@ -168,6 +168,58 @@ function checkUserName() {
 	submitBtn.disabled = false;
 }
 
+// Email Verification
+const userEmail = document.getElementById("userEmail");
+const errorMessageEmail = document.getElementById("errorMessageEmail");
+
+//adding live responsivness
+userEmail.addEventListener("input", checkEmail);
+
+const AuthEmailDomains = [
+	"@gmail.com",
+	"@yahoo.com",
+	"@outlook.com",
+	"@hotmail.com",
+	"@live.com",
+];
+
+// making isValid flag in false state.
+function checkEmail() {
+	const emailValue = userEmail.value.toLowerCase();
+	let isValid = false;
+	// loop explained: going through every allowed domain, and checking if the userEmail endswith()
+	// each one of the domains. basic loop. if it is found, flag turns true and breaks.
+	for (var i = 0; i < AuthEmailDomains.length; i++) {
+		if (emailValue.endsWith(AuthEmailDomains[i])) {
+			isValid = true;
+			break;
+		}
+	}
+	// asking if we found a match basically. flag is false so show the error message.
+	if (!isValid) {
+		errorMessageEmail.style.display = "block";
+		submitBtn.disabled = true;
+		return;
+	}
+
+	errorMessageEmail.style.display = "none";
+	submitBtn.disabled = false;
+}
+
+userEmail.addEventListener("input", checkEmail);
 // conditionsChecker();
 
+function handleSubmit(event) {
+	event.preventDefault();
+	const terms = document.getElementById("termsConditions");
+
+	if (!terms.checked) {
+		alert("You must accept the Terms & Conditions to continue.");
+		event.preventDefault();
+		return false;
+	}
+	saveUser();
+	window.location.href = "./login.html";
+	return false;
+}
 // for further purposes, the varaible userAge2 shows the final age.

@@ -42,3 +42,17 @@ form.addEventListener("submit", function(event) {
     // redirect to home page
     window.location.href = "./home_dashboard.html";
 })
+
+// password show
+const loginPass = document.getElementById("userPassword");
+const toggleLoginPass = document.getElementById("toggleLoginPass");
+
+toggleLoginPass.addEventListener("click", function() {
+    if (loginPass.type === "password") {
+        loginPass.type = "text";
+        toggleLoginPass.textContent = "🫣";
+    } else {
+        loginPass.type = "password";
+        toggleLoginPass.textContent = "👀";
+    }
+})

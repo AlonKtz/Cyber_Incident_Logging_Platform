@@ -18,9 +18,13 @@
 			password or credentials.
 		</p>
 		<br />
-		<form onsubmit="saveUser();">
+		<form onsubmit="return handleSubmit(event);">
 			<label>Email Address:</label>
 			<input type="email" id="userEmail" name="userEmail" /><br /><br />
+			<p id="errorMessageEmail" class="error" style="display: none">
+				email is not valid, we support only
+				@gmail/@yahoo/@outlook/@hotmail/@live.
+			</p>
 			<label>User Name:</label>
 			<input type="text" id="userName" name="userName" /><br /><br />
 			<p id="errorMessageUserShort" class="error" style="display: none">
@@ -65,8 +69,8 @@
 				AK EmberShield is restricted to ages under 18 and over 65.
 			</p>
 			<br />
-			<input type="checkbox" id="termsConditions" name="termsConditions" /> I
-			aknowledge the cybersecurity guidelines of AK Development Group.<br /><br />
+			<input type="checkbox" id="termsConditions" name="termsConditions"/> I
+			acknowledge the cybersecurity <a href="./termsOfAgreement.html">Terms &amp; conditions</a> of AK EmberShield.<br /><br />
 			<input
 				type="submit"
 				id="submitSignUp"
