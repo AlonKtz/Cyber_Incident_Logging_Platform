@@ -74,3 +74,4 @@ function handleAddEvent() {
 	}
 	return false;
 }
+
