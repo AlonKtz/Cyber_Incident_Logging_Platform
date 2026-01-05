@@ -76,6 +76,69 @@ textarea:focus {
   box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.15);
 }
 
+/* Incidents table styling */
+#incidentsTableContainer table {
+    width: 90%;
+    max-width: 960px;
+    margin: 16px auto;
+    border-collapse: collapse;
+    background-color: #ffffff;
+    color: #000000;
+    font-size: 14px;
+}
+
+#incidentsTableContainer th,
+#incidentsTableContainer td {
+    border: 1px solid #cfd8dc;
+    padding: 8px 10px;
+    text-align: left;
+}
+
+#incidentsTableContainer th {
+    background-color: #e9f5ef;
+}
+
+#incidentsTableContainer tr:nth-child(even) td {
+    background-color: #f7f7f7;
+}
+
+.remove-btn {
+    padding: 4px 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: #ff4d4d;
+    color: #ffffff;
+    border: none;
+}
+
+.remove-btn:hover {
+    background-color: #d43b3b;
+}
+
+/* layout: table and actions column side-by-side */
+.incidents-wrapper {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    justify-content: center;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.actions-column {
+    width: 96px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: stretch;
+}
+
+.remove-btn-row {
+    width: 100%;
+    padding: 6px 8px;
+    font-size: 13px;
+}
+
 .app-page::after {
 	content: "";
 	position: fixed;

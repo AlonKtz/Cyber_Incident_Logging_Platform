@@ -69,9 +69,38 @@ function NewEventChecker() {
 	return isFormValid;
 }
 function handleAddEvent() {
-	if (NewEventChecker() === true) {
-		return true;
+	if (NewEventChecker() !== true) {
+		return false;
 	}
+
+	// gather form values
+	var eventDateTime = document.getElementById('eventDateTime').value;
+	var drillFlag = document.getElementById('drillFlag').value;
+	var eventType = document.getElementById('cyberEvents').value;
+	var role = document.getElementById('roleOfReporter').value;
+	var severity = document.getElementById('severity').value;
+	var affectedSystem = document.getElementById('affectedSystem').value;
+	var summary = document.getElementById('eventSummary').value;
+	var reporter = (typeof currentUser !== 'undefined' && currentUser.userName) ? currentUser.userName : 'unknown';
+
+	var newEvent = {
+		id: Date.now(),
+		eventDateTime: eventDateTime,
+		drillFlag: drillFlag,
+		eventType: eventType,
+		role: role,
+		severity: severity,
+		affectedSystem: affectedSystem,
+		summary: summary,
+		reporter: reporter
+	};
+
+	// push to events array and persist
+	events.push(newEvent);
+	localStorage.setItem('events', JSON.stringify(events));
+
+	// go to incidents page to view the table
+	window.location.href = './myIncidents.html';
 	return false;
 }
 
