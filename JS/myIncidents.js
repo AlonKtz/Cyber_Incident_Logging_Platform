@@ -1,11 +1,11 @@
 
-// get events from localStorage
-var events = JSON.parse(localStorage.getItem('events')) || [];
+// events are loaded on each render to ensure up-to-date data
+var events = [];
 
 function createTableHeader() {
     var thead = document.createElement('thead');
     var tr = document.createElement('tr');
-    var headers = ['Date & Time', 'Drill/Actual', 'Type', 'Role', 'Severity', 'Affected System', 'Summary', 'Reporter'];
+    var headers = ['Date & Time', 'Drill/Actual', 'Type', 'Role', 'Severity', 'Affected System', 'Summary', 'Reporter', 'Actions'];
     for (var i = 0; i < headers.length; i++) {
         var th = document.createElement('th');
         th.textContent = headers[i];
@@ -39,15 +39,55 @@ function createTableBody(events) {
         tr.appendChild(tdSummary);
         tr.appendChild(tdReporter);
 
+        // actions cell: show delete button only for events created by current user
+        var tdAction = document.createElement('td');
+        if (typeof currentUser !== 'undefined' && currentUser && currentUser.userName && ev.reporter) {
+            var reporterNorm = ev.reporter.toString().trim().toLowerCase();
+            var currentNorm = currentUser.userName.toString().trim().toLowerCase();
+            if (reporterNorm === currentNorm) {
+                var btn = document.createElement('button');
+                btn.textContent = 'Delete';
+                btn.className = 'delete-btn';
+                // store id on the button to avoid closure issues
+                btn.setAttribute('data-id', ev.id);
+                btn.addEventListener('click', function () {
+                    var id = this.getAttribute('data-id');
+                    if (confirm('Delete this event?')) {
+                        removeEvent(Number(id));
+                    }
+                });
+                tdAction.appendChild(btn);
+            } else {
+                tdAction.textContent = '';
+            }
+        } else {
+            tdAction.textContent = '';
+        }
+        tr.appendChild(tdAction);
+
         tbody.appendChild(tr);
     }
     return tbody;
+}
+
+function removeEvent(id) {
+    for (var i = 0; i < events.length; i++) {
+        if (events[i].id === id) {
+            events.splice(i, 1);
+            break;
+        }
+    }
+    localStorage.setItem('events', JSON.stringify(events));
+    renderIncidents();
 }
 
 // Actions column removed — no remove buttons are rendered anymore.
 // If a future feature needs row actions, add a separate actions UI outside the table and implement handlers here.
 
 function renderIncidents() {
+    // reload events to get fresh data
+    events = JSON.parse(localStorage.getItem('events')) || [];
+
     var container = document.getElementById('incidentsTableContainer');
     if (!container) {
         // create container if missing
@@ -67,7 +107,7 @@ function renderIncidents() {
         return;
     }
 
-    // wrapper to hold table and actions column side-by-side
+    // wrapper to hold table
     var wrapper = document.createElement('div');
     wrapper.className = 'incidents-wrapper';
 
@@ -76,8 +116,6 @@ function renderIncidents() {
     table.appendChild(createTableBody(events));
 
     wrapper.appendChild(table);
-
-
 
     container.appendChild(wrapper);
 }

@@ -10,6 +10,12 @@
 /* solves the dropdown menu background color issue */
 select {
 	background-color: black;
+	color: white;
+}
+
+select option {
+	background-color: black;
+	color: white;
 }
 
 .error {
@@ -98,24 +104,52 @@ textarea:focus {
     background-color: #e9f5ef;
 }
 
-#incidentsTableContainer tr:nth-child(even) td {
-    background-color: #f7f7f7;
-}
-
-.remove-btn {
+/* per-row delete button inside table */
+#incidentsTableContainer .delete-btn {
     padding: 4px 8px;
     border-radius: 4px;
     cursor: pointer;
     background-color: #ff4d4d;
     color: #ffffff;
     border: none;
+    font-size: 12px;
 }
 
-.remove-btn:hover {
+#incidentsTableContainer .delete-btn:hover {
     background-color: #d43b3b;
+} 
+
+#incidentsTableContainer tr:nth-child(even) td {
+    background-color: #f7f7f7;
 }
 
-/* layout: table and actions column side-by-side */
+/* Home events table styling */
+#eventsContainer table {
+    width: 90%;
+    max-width: 720px;
+    margin: 8px auto;
+    border-collapse: collapse;
+    background-color: #ffffff;
+    color: #000000;
+    font-size: 14px;
+}
+
+#eventsContainer th,
+#eventsContainer td {
+    border: 1px solid #cfd8dc;
+    padding: 6px 8px;
+    text-align: left;
+}
+
+#eventsContainer th {
+    background-color: #e9f5ef;
+}
+
+#eventsContainer tr:nth-child(even) td {
+    background-color: #f7f7f7;
+}
+
+/* layout: table wrapper */
 .incidents-wrapper {
     display: flex;
     gap: 12px;
@@ -124,37 +158,197 @@ textarea:focus {
     max-width: 1100px;
     margin: 0 auto;
 }
-
-.actions-column {
-    width: 96px;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    align-items: stretch;
+/* Inline watermark: render logo next to each H1 */
+.app-page {
+    position: relative;
 }
 
-.remove-btn-row {
+.app-page h1 {
+    position: relative;
+    padding-right: 80px; /* space for the inline logo */
+}
+
+.app-page h1::after {
+    content: "";
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+
+    width: 56px;
+    height: 56px;
+
+    background-image: url("./AK_logo.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    opacity: 0.55;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Hide inline watermark on very small screens to avoid layout issues */
+@media (max-width: 480px) {
+    .app-page h1::after {
+        display: none;
+    }
+    .app-page h1 { padding-right: 16px; }
+}
+
+/* Ensure tables and containers render above the watermark */
+#incidentsTableContainer,
+#eventsContainer {
+    position: relative;
+    z-index: 2;
+}
+
+/* Resume section styling */
+#resumeContainer {
+    background-color: rgba(0, 0, 0, 0.3);
+    border: 1px solid #00b480;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 20px 0;
+}
+
+#resumeContainer h3 {
+    color: #00b480;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+#resumeContainer label {
+    display: block;
+    margin-top: 12px;
+    margin-bottom: 6px;
+    font-weight: 500;
+}
+
+#resumeContainer input[type="text"],
+#resumeContainer input[type="number"],
+#resumeContainer select,
+#resumeContainer textarea {
     width: 100%;
-    padding: 6px 8px;
+    max-width: 400px;
+    padding: 8px;
+    margin-bottom: 8px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid #00b480;
+    border-radius: 4px;
+    color: white;
+    font-family: inherit;
+}
+
+#resumeContainer input[type="checkbox"] {
+    margin-right: 8px;
+}
+
+#resumeContainer .error {
+    color: #ff6b6b;
+    font-size: 12px;
+    margin-top: 2px;
+}
+
+#resumeContainer button {
+    background-color: #00b480;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin-right: 10px;
+    margin-top: 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+#resumeContainer button:hover {
+    background-color: #009966;
+}
+
+#resumeContainer button:disabled {
+    background-color: #666;
+    cursor: not-allowed;
+}
+
+/* Resume display styling */
+.resume-card,
+.tech-stack-display {
+    background-color: rgba(0, 0, 0, 0.3);
+    border: 1px solid #00b480;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 20px 0;
+}
+
+.resume-section,
+.tech-section {
+    margin: 15px 0;
+    padding: 15px;
+    background-color: rgba(0, 180, 128, 0.1);
+    border-left: 3px solid #00b480;
+    border-radius: 4px;
+}
+
+.resume-section h4,
+.tech-section h3 {
+    color: #00b480;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.section-content {
+    line-height: 1.8;
+}
+
+.section-content p {
+    margin: 8px 0;
+}
+
+.profile-header {
+    text-align: center;
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #00b480;
+}
+
+.profile-header h2 {
+    margin: 0;
+    font-size: 28px;
+    color: #00b480;
+}
+
+.profile-header p {
+    margin: 5px 0 0 0;
+    color: #aaa;
+    font-size: 14px;
+}
+
+.skills-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.skill-tag {
+    display: inline-block;
+    background-color: #00b480;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 20px;
     font-size: 13px;
+    white-space: nowrap;
 }
 
-.app-page::after {
-	content: "";
-	position: fixed;
-	bottom: 24px;
-	right: 24px;
-
-	width: 56px;
-	height: 56px;
-
-	background-image: url("./AK_logo.png"); /* ← זה השינוי */
-	background-size: contain;
-	background-repeat: no-repeat;
-	background-position: center;
-
-	opacity: 0.7;
-	z-index: 9999;
-	pointer-events: none;
+.status-current {
+    display: inline-block;
+    background-color: #2ecc71;
+    color: white;
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: bold;
 }
+
 

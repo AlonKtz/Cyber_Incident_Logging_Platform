@@ -6,8 +6,8 @@
 		<title>User Profile</title>
 		<link rel="stylesheet" href="../style.css" />
 		<script src="../JS/userAuth.js" defer></script>
-		<script src="../JS/nav.js" defer></script>
 		<script src="../JS/profile.js" defer></script>
+		<script src="../JS/resume.js" defer></script>
 	</head>
 	<body class="app-page">
 		<iframe src="navBar.html" id="navFrame"></iframe>
@@ -21,5 +21,74 @@
 			<p><strong>Age:</strong> <span id="profileAge"></span></p>
 			<p><strong>Date of Birth:</strong> <span id="profileDob"></span></p>
 		</div>
+
+		<h2>Tech Stack & Resume</h2>
+		<button id="editResumeBtn">Edit Tech Stack</button>
+		<div id="resumeContainer" style="display: none;">
+			<h3>Education</h3>
+			<div id="educationSection">			<label>
+				<input type="checkbox" id="noEducation" />
+				I have no formal education
+			</label>
+				<label>Years of Study:</label>
+				<input type="number" id="educationYears" min="1" max="10" placeholder="e.g., 4" />
+				<p id="educationYearsError" class="error" style="display: none;"></p>
+
+				<label>Field:</label>
+				<input type="text" id="educationField" placeholder="e.g., Computer Science" />
+				<p id="educationFieldError" class="error" style="display: none;"></p>
+
+				<label>Degree Type:</label>
+				<select id="degreeType">
+					<option value="Choose">Choose</option>
+					<option value="No Education">No Education</option>
+					<option value="BSC">BSC (Bachelor of Science)</option>
+					<option value="BA">BA (Bachelor of Arts)</option>
+					<option value="BCS">BCS (Bachelor of Computer Science)</option>
+					<option value="MBA">MBA (Master of Business Administration)</option>
+					<option value="MS">MS (Master of Science)</option>
+					<option value="Diploma">Diploma</option>
+					<option value="Other">Other</option>
+				</select>
+				<p id="degreeTypeError" class="error" style="display: none;"></p>
+			</div>
+
+			<h3>Experience</h3>
+			<div id="experienceSection">
+				<label>Company Name:</label>
+				<input type="text" id="companyName" placeholder="e.g., Tech Corp Inc." />
+				<p id="companyNameError" class="error" style="display: none;"></p>
+
+				<label>
+					<input type="checkbox" id="noExperience" />
+					I have no work experience
+				</label>
+
+				<label>Time in Company:</label>
+				<input type="number" id="yearsInCompany" min="0" max="50" placeholder="e.g., 2" />
+				<p id="yearsInCompanyError" class="error" style="display: none;"></p>
+
+				<label>
+					<input type="checkbox" id="currentlyWorking" />
+					I am currently working here
+				</label>
+
+				<label>Role/Position:</label>
+				<input type="text" id="jobRole" placeholder="e.g., Senior Developer" />
+				<p id="jobRoleError" class="error" style="display: none;"></p>
+			</div>
+
+			<h3>Skills</h3>
+			<div id="skillsSection">
+				<label>Skills (comma-separated):</label>
+				<textarea id="skills" placeholder="e.g., JavaScript, Python, React, Cybersecurity" rows="4"></textarea>
+				<p id="skillsError" class="error" style="display: none;"></p>
+			</div>
+
+			<button id="saveResumeBtn">Save Tech Stack</button>
+			<button id="cancelResumeBtn">Cancel</button>
+		</div>
+
+		<div id="resumeDisplay"></div>
 	</body>
 </html>
