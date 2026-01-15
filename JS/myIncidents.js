@@ -1,6 +1,7 @@
 
 // events are loaded on each render to ensure up-to-date data
 var events = [];
+var filteredEvents = [];
 
 function createTableHeader() {
     var thead = document.createElement('thead');
@@ -88,6 +89,14 @@ function renderIncidents() {
     // reload events to get fresh data
     events = JSON.parse(localStorage.getItem('events')) || [];
 
+    // apply search filter
+    var selectedColumn = document.getElementById('searchColumn') ? document.getElementById('searchColumn').value : 'summary';
+    var searchTerm = document.getElementById('searchTerm') ? document.getElementById('searchTerm').value.toLowerCase() : '';
+    filteredEvents = events.filter(function(ev) {
+        var fieldValue = (ev[selectedColumn] || '').toLowerCase();
+        return fieldValue.includes(searchTerm);
+    });
+
     var container = document.getElementById('incidentsTableContainer');
     if (!container) {
         // create container if missing
@@ -100,9 +109,9 @@ function renderIncidents() {
     // clear container
     container.innerHTML = '';
 
-    if (!events || events.length === 0) {
+    if (!filteredEvents || filteredEvents.length === 0) {
         var p = document.createElement('p');
-        p.textContent = 'No incidents logged yet.';
+        p.textContent = events.length === 0 ? 'No incidents logged yet.' : 'No incidents match the search criteria.';
         container.appendChild(p);
         return;
     }
@@ -113,7 +122,7 @@ function renderIncidents() {
 
     var table = document.createElement('table');
     table.appendChild(createTableHeader());
-    table.appendChild(createTableBody(events));
+    table.appendChild(createTableBody(filteredEvents));
 
     wrapper.appendChild(table);
 
@@ -123,4 +132,12 @@ function renderIncidents() {
 // run on load
 document.addEventListener('DOMContentLoaded', function () {
     renderIncidents();
+    var searchColumn = document.getElementById('searchColumn');
+    var searchTerm = document.getElementById('searchTerm');
+    if (searchColumn) {
+        searchColumn.addEventListener('change', renderIncidents);
+    }
+    if (searchTerm) {
+        searchTerm.addEventListener('input', renderIncidents);
+    }
 });

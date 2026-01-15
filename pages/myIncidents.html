@@ -11,6 +11,13 @@
 	<body class="app-page">
 		<iframe src="navBar.html" id="navFrame"></iframe>
         <h1>Incident Logger</h1>
+        <div id="searchContainer">
+            <select id="searchColumn">
+                <option value="summary">Summary</option>
+                <option value="affectedSystem">Affected System</option>
+            </select>
+            <input type="text" id="searchTerm" placeholder="Search..." />
+        </div>
         <div id="incidentsTableContainer"></div>
 	</body>
 </html>
